@@ -1,0 +1,97 @@
+{% extends 'homepage.html' %}
+{% load static %}
+{% block content %}
+      
+    {% include 'include/header.html' %}
+
+        <!-- Start Home -->
+        <section class="bg-half-170 d-table w-100" style="background: url('images/bg/01.jpg') bottom;">
+            <div class="bg-overlay bg-gradient-overlay-2"></div>
+            <div class="container">
+                <div class="row mt-5 justify-content-center">
+                    <div class="col-12">
+                        <div class="title-heading text-center">
+                            <h5 class="heading fw-semibold sub-heading text-white title-dark">Редактирование профиля</h5>
+                            <p class="text-white-50 para-desc mx-auto mb-0">Измените данные аккаунта</p>
+                        </div>
+                    </div><!--end col-->
+                </div><!--end row-->
+
+                <div class="position-middle-bottom">
+                    <nav aria-label="breadcrumb" class="d-block">
+                        <ul class="breadcrumb breadcrumb-muted mb-0 p-0">
+                            <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Редактирование профиля</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div><!--end container-->
+        </section><!--end section-->
+
+
+        <!-- Start -->
+        <section class="section">
+            <
+                <div class="row">
+                    <div class="col-lg-8 col-md-7 col-12 order-2 order-md-1 mt-4 pt-2">
+                        <div class="rounded-md shadow">
+                            <div class="p-4 border-bottom">
+                                <h5 class="mb-0">Изменение профиля :</h5>
+                            </div>
+
+                            <div class="p-4">
+                                <form method = 'POST' class="profile-edit">
+                                    {% csrf_token %}
+                                    <div class="row">
+                                        <div class="col-12 mb-4">
+                                            <label class="form-label h6">Username</label>
+                                            <input name="username" type="text" class="form-control" value='{{user.username}}'>
+                                        </div><!--end col-->
+
+    
+        
+                                        <div class="col-12 mb-4">
+                                            <label class="form-label h6">Почта</label>
+                                            <input name="email" id="email" type="email" class="form-control" value='{{user.email}}'>
+                                        </div><!--end col-->
+                                    </div><!--end row-->
+    
+                                    
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <button type="submit" name="update" class="btn btn-primary rounded-md">Обновить</button>
+                                        </div><!--end col-->
+                                    </div><!--end row-->
+                                </form>
+                            </div>
+                        </div>
+
+                        
+                        <div class="rounded-md shadow mt-4">
+                            <div class="p-4 border-bottom">
+                                <h5 class="mb-0 text-danger">Удалит аккаунт :</h5>
+                            </div>
+
+                            <form method = 'POST' class="p-4">
+                                {% csrf_token %}
+                                <h6 class="mb-0">Вы точно хотите удалить аккаунт? Нажмите на кнопку удалить</h6>
+                                <div class="mt-4">
+                                    <button name ='delete' class="btn btn-danger">Удалить аккаунт</button>
+                                </div><!--end col-->
+                            </form>
+                        </div>
+                    </div><!--end col-->
+
+                    
+                </div><!--end row-->
+            </div><!--end container-->
+        </section><!--end section-->
+        <!-- End -->
+
+      
+
+        <!-- Wallet Modal -->
+
+        <!-- end Style switcher -->
+        
+        {% endblock content %}

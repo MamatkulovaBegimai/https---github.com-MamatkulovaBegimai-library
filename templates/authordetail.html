@@ -1,0 +1,218 @@
+{% extends 'homepage.html' %}
+{% load static %}
+{% block content %}
+	<!--[if lt IE 8]>
+		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+	<!--************************************
+			Wrapper Start
+	*************************************-->
+	<div id="tg-wrapper" class="tg-wrapper tg-haslayout">
+		{% include 'include/header.html' %}
+
+			
+		<div class="tg-innerbanner tg-haslayout tg-parallax tg-bginnerbanner" data-z-index="-100" data-appear-top-offset="600" data-parallax="scroll" data-image-src="{% static 'images/parallax/bgparallax-07.jpg' %}">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<div class="tg-innerbannercontent">
+							<h1>Authors</h1>
+							<ol class="tg-breadcrumb">
+								<li><a href="javascript:void(0);">главная</a></li>
+								<li><a href="javascript:void(0);">Авторы</a></li>
+								<li class="tg-active">Об авторе</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--************************************
+				Inner Banner End
+		*************************************-->
+		<!--************************************
+				Main Start
+		*************************************-->
+		<main id="tg-main" class="tg-main tg-haslayout">
+			<!--************************************
+					Author Detail Start
+			*************************************-->
+			<div class="tg-sectionspace tg-haslayout">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<div class="tg-authordetail">
+								<figure class="tg-authorimg">
+									<img width="300px" height="400px" src="{{ authors_detail.profile_image.url }}" alt="image description">
+								</figure>
+								<div class="tg-authorcontentdetail">
+									<div class="tg-sectionhead">
+										<h2><span>{{authors_detail.author_book.count}} опубликованных книг</span>{{authors_detail.name}}</h2>
+										<ul class="tg-socialicons">
+											<li class="tg-facebook"><a href="{{authors_detail.facebook}}"><i class="fa fa-facebook"></i></a></li>
+											<li class="tg-twitter"><a href="{{authors_detail.twitter}}><i class="fa fa-twitter"></i></a></li>
+											
+										</ul>
+									</div>
+									<div class="tg-description">
+										<p>{{authors_detail.about_author}}</p>
+									</div>
+									<div class="tg-booksfromauthor">
+										<div class="tg-sectionhead">
+											<h2>Книги {{authors_detail.name}}</h2>
+										</div>
+										<div class="row">
+											{% for book in authors_detail.author_book.all %}
+											<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+												<div class="tg-postbook">
+													<figure class="tg-featureimg">
+														<a href="{% url 'products_detail' book.id %}"><div class="tg-bookimg">
+															<div class="tg-frontcover"><img src="{{book.book_photo.url}}" alt="image description"></div>
+															<div class="tg-backcover"><img src="{{book.book_photo.url}}" alt="image description"></div>
+														</div></a>
+														
+													</figure>
+													<div class="tg-postbookcontent">
+														<ul class="tg-bookscategories">
+															<li><a href="javascript:void(0);">{{book.category}}</a></li>
+														</ul>
+														<div class="tg-booktitle">
+															<h3><a href="{% url 'products_detail' book.id %}">{{book.name}}</a></h3>
+														</div>
+														<span class="tg-bookwriter">Автор: <a href="javascript:void(0);">{{book.author_book}}</a></span>
+														
+														<a class="tg-btn tg-btnstyletwo" href="{% url 'products_detail' book.id %}">
+															<i class="fa fa-download"></i>
+															<em>Подробнее</em>
+														</a>
+													</div>
+												</div>
+											</div>
+											{% endfor %}
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--************************************
+					Author Detail End
+			*************************************-->
+		</main>
+		<!--************************************
+				Main End
+		*************************************-->
+		<!--************************************
+				Footer Start
+		*************************************-->
+		<footer id="tg-footer" class="tg-footer tg-haslayout">
+			<div class="tg-footerarea">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<ul class="tg-clientservices">
+								<li class="tg-devlivery">
+									<span class="tg-clientserviceicon"><i class="icon-book"></i></span>
+									<div class="tg-titlesubtitle">
+										<h3>Очень много книг</h3>
+										<p>Большой выбор</p>
+									</div>
+								</li>
+								<li class="tg-discount">
+									<span class="tg-clientserviceicon"><i class="icon-home"></i></span>
+									<div class="tg-titlesubtitle">
+										<h3>Большой зал</h3>
+										<p>Много мест</p>
+									</div>
+								</li>
+								<li class="tg-quality">
+									<span class="tg-clientserviceicon"><i class="icon-leaf"></i></span>
+									<div class="tg-titlesubtitle">
+										<h3>Уютная атмосфера</h3>
+										<p>Красивый дизайн</p>
+									</div>
+								</li>
+								<li class="tg-support">
+									<span class="tg-clientserviceicon"><i class="icon-heart"></i></span>
+									<div class="tg-titlesubtitle">
+										<h3>Вежливая команда</h3>
+										<p>Индивидуальный подход</p>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="tg-threecolumns">
+							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+								<div class="tg-footercol">
+									<strong class="tg-logo"><a href="javascript:void(0);"><img src="{{setting.logo.url}}" alt="image description"></a></strong>
+									<ul class="tg-contactinfo">
+										<li>
+											<i class="icon-apartment"></i>
+											<address>{{setting.street}}</address>
+										</li>
+										<li>
+											<i class="icon-phone-handset"></i>
+											<span>
+												<em>{{setting.phone}}</em>
+											</span>
+										</li>
+										<li>
+											<i class="icon-clock"></i>
+											<span>{{setting.graphic}}</span>
+										</li>
+										<li>
+											<i class="icon-envelope"></i>
+											<span>
+												<em><a href="mailto:support@domain.com">{{setting.email}}</a></em>
+											</span>
+										</li>
+									</ul>
+									<ul class="tg-socialicons">
+										<li class="tg-facebook"><a href="{{setting.facebook}}"><i class="fa fa-facebook"></i></a></li>
+										<li class="tg-twitter"><a href="{{setting.twitter}}"><i class="fa fa-twitter"></i></a></li>
+									
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tg-newsletter">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+							<h4>Signup Newsletter!</h4>
+							<h5>Consectetur adipisicing elit sed do eiusmod tempor incididunt.</h5>
+						</div>
+						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+							<form class="tg-formtheme tg-formnewsletter">
+								<fieldset>
+									<input type="email" name="email" class="form-control" placeholder="Enter Your Email ID">
+									<button type="button"><i class="icon-envelope"></i></button>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tg-footerbar">
+				<a id="tg-btnbacktotop" class="tg-btnbacktotop" href="javascript:void(0);"><i class="icon-chevron-up"></i></a>
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<span class="tg-paymenttype"><img src="{% static 'images/paymenticon.png' %}" alt="image description"></span>
+							<span class="tg-copyright">2017 All Rights Reserved By &copy; Book Library</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!--************************************
+				Footer End
+		*************************************-->
+	</div>
+
+{% endblock content %}

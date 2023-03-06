@@ -1,0 +1,89 @@
+{% extends 'homepage.html' %}
+{% load static %}
+{% block content %}
+
+{% include 'include/header.html' %}
+
+<main id="tg-main" class="tg-main tg-haslayout">
+  <!--************************************
+      News Grid Start
+  *************************************-->
+  <div class="tg-sectionspace tg-haslayout">
+    <div class="container">
+      <div class="row">
+        <div id="tg-twocolumns" class="tg-twocolumns">
+          <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9 pull-right">
+            <div id="tg-content" class="tg-content">
+              <div class="tg-products">
+             
+                {% for product in products %}
+                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+                  <div class="tg-postbook">
+                    <figure class="tg-featureimg">
+                      <div class="tg-bookimg">
+                        <a href="{% url 'products_detail' product.id %}"><div class="tg-frontcover"><img src="{{product.book_photo.url}}" alt="image description"></div></a>
+                        <a href="{% url 'products_detail' product.id %}"><div class="tg-backcover"><img src="{{product.book_photo.url}}" alt="image description"></div></a>
+                      </div>
+                      
+                    </figure>
+                    <div class="tg-postbookcontent">
+                      <ul class="tg-bookscategories">
+                        <li><a href="javascript:void(0);">{{product.category}}</a></li>
+                      </ul>
+                      <div class="tg-booktitle">
+                        <h3><a href="javascript:void(0);"><a href="{% url 'products_detail' product.id %}">{{product.name}}</a></a></h3>
+                      </div>
+                      <span class="tg-bookwriter">Автор: <a href="javascript:void(0);">{{product.author_book}}</a></span>
+                    
+                      <a class="tg-btn tg-btnstyletwo" href="{% url 'products_detail' product.id %}">
+                        <i class="fa fa-shopping"></i>
+                        <em>Подробнее</em>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+                 
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 pull-left">
+            <aside id="tg-sidebar" class="tg-sidebar">
+              <div class="tg-widget tg-widgetsearch">
+           
+              </div>
+          
+              
+              <div class="tg-widget tg-widgetblogers">
+              
+                {% for author in authors %}
+                <div class="tg-widgetcontent">
+                  <ul>
+                    <li>
+                      <div class="tg-author">
+                        <figure><a href="javascript:void(0);"><img src="{{author.profile_image.url}}" alt="image description"></a></figure>
+                        <div class="tg-authorcontent">
+                          <h2><a href="javascript:void(0);"><a href="{% url 'authors_detail' author.id %}">{{author.name}}</a></a></h2>
+                          <span>{{authors_detail.author_book.count}}</span>
+                        </div>
+                      </div>
+                    </li>	
+                  </ul>
+                </div>
+                {% endfor %}
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--************************************
+      News Grid End
+  *************************************-->
+</main>
+{% endblock content %}

@@ -1,0 +1,245 @@
+{% extends 'homepage.html' %}
+{% load static %}
+{% block content %}
+	<!--[if lt IE 8]>
+		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+
+	<!--************************************
+	
+		Wrapper Start
+	*************************************-->
+	<div id="tg-wrapper" class="tg-wrapper tg-haslayout">
+		{% include 'include/header.html' %}
+
+		<!--************************************
+				Inner Banner Start
+		*************************************-->
+		<div class="tg-innerbanner tg-haslayout tg-parallax tg-bginnerbanner" data-z-index="-100" data-appear-top-offset="600" data-parallax="scroll" data-image-src="{% static 'images/parallax/bgparallax-07.jpg' %}">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<div class="tg-innerbannercontent">
+							<h1>Авторы</h1>
+							<ol class="tg-breadcrumb">
+								<li><a href="javascript:void(0);"><a href="{% url 'index' %}">главная</a></a></li>
+								<li class="tg-active">Авторы</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--************************************
+				Inner Banner End
+		*************************************-->
+		<!--************************************
+				Main Start
+		*************************************-->
+		<main id="tg-main" class="tg-main tg-haslayout">
+			<!--************************************
+					Authors Start
+			*************************************-->
+			<div class="tg-authorsgrid">
+				<div class="container">
+					<div class="row">
+						<div class="tg-authors">
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<div class="tg-sectionhead">
+									<h2><span>Сильные умы позади нас</span>Самые популярные авторы</h2>
+								</div>
+							</div>
+							{% for author in authors %}
+
+							<div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+
+								<div class="tg-author">
+
+									<figure><a href="javascript:void(0);"><img src="{{ author.profile_image.url }}" alt="image description"></a></figure>
+									<div class="tg-authorcontent">
+										<h2><a href="javascript:void(0);"><a href="{% url 'authors_detail' author.id %}">{{ author.name }}</a></a></h2>
+										<span>{{ authors_detail.profile_image.url }}</span>
+										<ul class="tg-socialicons">
+											<li  class="tg-facebook"><a href="{{author.facebook}}"></a></li>
+											<li class="tg-twitter"><a href="{{author.twitter}}"></a></li>
+										</ul>
+									</div>
+
+								</div>
+
+						</div>
+						{% endfor  %}	
+
+					</div>
+				</div>
+			</div>
+			<!--************************************
+					Authors End
+			*************************************-->
+			<!--************************************
+			
+			<!--************************************
+					Picked By Author Start
+			*************************************-->
+			<section class="tg-sectionspace tg-haslayout">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<div class="tg-sectionhead">
+								<h2><span>Некоторые великие книги</span>Выбрано Авторами</h2>
+							</div>
+						</div>
+						<div id="tg-pickedbyauthorslider" class="tg-pickedbyauthor tg-pickedbyauthorslider owl-carousel">
+							{% for product in random_products %}
+							<div class="item">
+								<div class="tg-postbook">
+									<figure class="tg-featureimg">
+										<div class="tg-bookimg">
+											<div class="tg-frontcover"><img src="{{product.book_photo.url}}" alt="image description"></div>
+										</div>
+										<div class="tg-hovercontent">
+											<div class="tg-description">
+												<p>{{product.book_description}}</p>
+											</div>
+											<strong class="tg-bookpage">Страница: {{product.page}}</strong>
+											<strong class="tg-bookcategory">Категория: {{product.category}}</strong>
+										</div>
+									</figure>
+									<div class="tg-postbookcontent">
+										<div class="tg-booktitle">
+											<h3><a href="{% url 'products_detail' product.id %}">{{product.name}}</a></h3>
+										</div>
+										<span class="tg-bookwriter">Автор: <a href="{% url 'products_detail' product.id %}">{{product.author_book}}</a></span>
+										<a class="tg-btn tg-btnstyletwo" href="{% url 'products_detail' product.id %}">
+											<i class="fa fa-shopping"></i>
+											<em>Подробнее</em>
+										</a>
+									</div>
+								</div>
+							</div>
+							{% endfor %}
+							
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--************************************
+					Picked By Author End
+			*************************************-->
+		</main>
+		<!--************************************
+				Main End
+		*************************************-->
+		<!--************************************
+				Footer Start
+		*************************************-->
+		<footer id="tg-footer" class="tg-footer tg-haslayout">
+			<div class="tg-footerarea">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<ul class="tg-clientservices">
+								<li class="tg-devlivery">
+									<span class="tg-clientserviceicon"><i class="icon-book"></i></span>
+									<div class="tg-titlesubtitle">
+										<h3>Очень много книг</h3>
+										<p>Большой выбор</p>
+									</div>
+								</li>
+								<li class="tg-discount">
+									<span class="tg-clientserviceicon"><i class="icon-home"></i></span>
+									<div class="tg-titlesubtitle">
+										<h3>Большой зал</h3>
+										<p>Много мест</p>
+									</div>
+								</li>
+								<li class="tg-quality">
+									<span class="tg-clientserviceicon"><i class="icon-leaf"></i></span>
+									<div class="tg-titlesubtitle">
+										<h3>Уютная атмосфера</h3>
+										<p>Красивый дизайн</p>
+									</div>
+								</li>
+								<li class="tg-support">
+									<span class="tg-clientserviceicon"><i class="icon-heart"></i></span>
+									<div class="tg-titlesubtitle">
+										<h3>Вежливая команда</h3>
+										<p>Индивидуальный подход</p>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="tg-threecolumns">
+							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+								<div class="tg-footercol">
+									<strong class="tg-logo"><a href="javascript:void(0);"><img src="{{setting.logo.url}}" alt="image description"></a></strong>
+									<ul class="tg-contactinfo">
+										<li>
+											<i class="icon-apartment"></i>
+											<address>{{setting.street}}</address>
+										</li>
+										<li>
+											<i class="icon-phone-handset"></i>
+											<span>
+												<em>{{setting.phone}}</em>
+											</span>
+										</li>
+										<li>
+											<i class="icon-clock"></i>
+											<span>{{setting.graphic}}</span>
+										</li>
+										<li>
+											<i class="icon-envelope"></i>
+											<span>
+												<em><a href="mailto:support@domain.com">{{setting.email}}</a></em>
+											</span>
+										</li>
+									</ul>
+									<ul class="tg-socialicons">
+										<li class="tg-facebook"><a href="{{setting.facebook}}"><i class="fa fa-facebook"></i></a></li>
+										<li class="tg-twitter"><a href="{{setting.twitter}}"><i class="fa fa-twitter"></i></a></li>
+
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tg-newsletter">
+				<div class="container">
+					<div class="row">
+						
+						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+							<h4>Signup Newsletter!</h4>
+							<h5>Consectetur adipisicing elit sed do eiusmod tempor incididunt.</h5>
+						</div>
+						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+							<form class="tg-formtheme tg-formnewsletter">
+								<fieldset>
+									<input type="email" name="email" class="form-control" placeholder="Enter Your Email ID">
+									<button type="button"><i class="icon-envelope"></i></button>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tg-footerbar">
+				<a id="tg-btnbacktotop" class="tg-btnbacktotop" href="javascript:void(0);"><i class="icon-chevron-up"></i></a>
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<span class="tg-paymenttype"><img src="{% static 'images/paymenticon.png' %}" alt="image description"></span>
+							<span class="tg-copyright">2017 All Rights Reserved By &copy; Book Library</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!--************************************
+				Footer End
+		*************************************-->
+	</div>
+
+{% endblock content %}

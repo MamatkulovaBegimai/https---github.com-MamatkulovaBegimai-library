@@ -1,0 +1,169 @@
+{% extends 'homepage.html' %}
+{% load static %}
+{% block content %}
+
+	<div id="tg-wrapper" class="tg-wrapper tg-haslayout">
+		{% include 'include/header.html' %}
+		<!--************************************
+	
+		<!--************************************
+				Inner Banner Start
+		*************************************-->
+		<div class="tg-innerbanner tg-haslayout tg-parallax tg-bginnerbanner" data-z-index="-100" data-appear-top-offset="600" data-parallax="scroll" data-image-src="{% static 'images/parallax/b' %}gparallax-07.jpg' %}">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<div class="tg-innerbannercontent">
+							<h1>Связаться с нами</h1>
+							<ol class="tg-breadcrumb">
+								<li><a href="javascript:void(0);">главная</a></li>
+								<li class="tg-active">Связаться с нами Us</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--************************************
+				Inner Banner End
+		*************************************-->
+		<!--************************************
+				Main Start
+		*************************************-->
+		<main id="tg-main" class="tg-main tg-haslayout">
+			<!--************************************
+					Contact Us Start
+			*************************************-->
+			<div class="tg-sectionspace tg-haslayout">
+				<div class="container">
+					<div class="row">
+						<div class="tg-contactus">
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<div class="tg-sectionhead">
+									<h2><span>Скажи привет!</span>Свяжись с нами</h2>
+								</div>
+							</div>
+							
+							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+								<form method="POST" class="tg-formtheme tg-formcontactus">
+									{% csrf_token %}
+									<fieldset>
+										<div class="form-group">
+											<input type="text" name="name" class="form-control" placeholder="Имя *">
+										</div>
+										<div class="form-group">
+											<input type="email" name="email" class="form-control" placeholder="E-mail *">
+										</div>
+										<div class="form-group">
+											<input type="text" name="phone" class="form-control" placeholder="Номер телефона *">
+										</div>
+										<div class="form-group">
+											<input type="text" name="subject" class="form-control" placeholder="Тема *">
+										</div>
+										
+										<div class="form-group tg-hastextarea">
+											<textarea name="message" placeholder="Сообщение"></textarea>
+										</div>
+										<div class="form-group">
+											<button type="submit" class="tg-btn tg-active">Отправить</button>
+										</div>
+									</fieldset>
+								</form>
+								<div class="tg-contactdetail">
+									<div class="tg-sectionhead">
+										<h2>Свяжись с нами</h2>
+									</div>
+									<ul class="tg-contactinfo">
+										<li>
+											<i class="icon-apartment"></i>
+											<address>{{setting.street}}</address>
+										</li>
+										<li>
+											<i class="icon-phone-handset"></i>
+											<span>
+												<em>{{setting.phone}}</em>
+											</span>
+										</li>
+										<li>
+											<i class="icon-clock"></i>
+											<span>{{setting.graphic}}</span>
+										</li>
+										<li>
+											<i class="icon-envelope"></i>
+											<span>
+												<em><a href="mailto:support@domain.com">{{setting.email}}</a></em>
+											</span>
+										</li>
+									</ul>
+									<ul class="tg-socialicons">
+										<li class="tg-facebook"><a href="{{setting.facebook}}"><i class="fa fa-facebook"></i></a></li>
+										<li class="tg-twitter"><a href="{{setting.twitter}}"><i class="fa fa-twitter"></i></a></li>
+
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--************************************
+					Contact Us End
+			*************************************-->
+		</main>
+		<!--************************************
+				Main End
+		*************************************-->
+		<!--************************************
+				Footer Start
+		*************************************-->
+		<footer id="tg-footer" class="tg-footer tg-haslayout">
+			<div class="tg-footerarea">
+				<div class="container">
+					<div class="row">
+				
+						<div class="tg-threecolumns">
+							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+								<div class="tg-footercol">
+									<strong class="tg-logo"><a href="javascript:void(0);"><img src="{{setting.logo.url}}" alt="image description"></a></strong>
+									<ul class="tg-contactinfo">
+										<li>
+											<i class="icon-apartment"></i>
+											<address>{{setting.street}}</address>
+										</li>
+										<li>
+											<i class="icon-phone-handset"></i>
+											<span>
+												<em>{{setting.phone}}</em>
+											</span>
+										</li>
+										<li>
+											<i class="icon-clock"></i>
+											<span>{{setting.graphic}}</span>
+										</li>
+										<li>
+											<i class="icon-envelope"></i>
+											<span>
+												<em><a href="mailto:support@domain.com">{{setting.email}}</a></em>
+											</span>
+										</li>
+									</ul>
+									<ul class="tg-socialicons">
+										<li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
+										<li class="tg-twitter"><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
+								
+									</ul>
+								</div>
+							</div>
+					
+						
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</footer>
+		<!--************************************
+				Footer End
+		*************************************-->
+	</div>
+{% endblock content %}

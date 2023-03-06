@@ -1,0 +1,215 @@
+{% extends 'homepage.html' %}
+{% load static %}
+{% block content %}
+	<!--[if lt IE 8]>
+		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+	<!--************************************
+			Wrapper Start
+	*************************************-->
+	<div id="tg-wrapper" class="tg-wrapper tg-haslayout">
+		{% include 'include/header.html' %}
+
+		<div class="tg-innerbanner tg-haslayout tg-parallax tg-bginnerbanner" data-z-index="-100" data-appear-top-offset="600" data-parallax="scroll" data-image-src="{% static 'images/parallax/bgparallax-07.jpg' %}">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<div class="tg-innerbannercontent">
+							<h1>Мой аккаунт</h1>
+							<ol class="tg-breadcrumb">
+								<li><a href="javascript:void(0);">home</a></li>
+								<li class="tg-active">Мой аккаунт</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--************************************
+				Inner Banner End
+		*************************************-->
+		<!--************************************
+				Main Start
+		*************************************-->
+		<main id="tg-main" class="tg-main tg-haslayout">
+			<!--************************************
+					Author Detail Start
+			*************************************-->
+			<div class=" tg-haslayout">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<div class="tg-authordetail">
+								
+								<div class="tg-authorcontentdetail">
+									<div class="tg-sectionhead">
+										<h2>{{request.user.username}}</h2>
+									</div>
+									<div class="tg-sectionhead">
+										<div class="mt-4">
+											<a href="{% url 'edit_profile' user.username %}" class="btn btn-pills btn-outline-primary mx-1">Изменить профиль</a>
+										</div>
+									</div>
+									<div class="tg-sectionhead">
+										<h3>Избраные книги</h3>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tg-sectionspace tg-haslayout">
+				<div class="container">
+					<div class="row">
+						<div >
+							{% for product in user.liked_user.all %}
+							<div class="col-xs-12 col-sm-8 col-md-6 pull-right">
+								<div id="tg-content" class="tg-content">
+									<div class="tg-products">
+										<div class="tg-widgetcontent">
+											<ul>
+											<li style='list-style:none;'>
+												<article class="tg-post">
+													<figure><a href="javascript:void(0);"><img src="{{product.product.book_photo.url}}" alt="image description"></a></figure>
+													<div class="tg-postcontent">
+														<div class="tg-posttitle">
+															<h3><a href="javascript:void(0);">{{product.product.name}}</a></h3>
+														</div>
+														<span class="tg-bookwriter">Автор: <a href="javascript:void(0);">{{product.product.author_book}}</a></span>
+													</div>
+												
+												</article>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+				
+		</main>
+
+
+		<!--************************************
+				Main End
+		*************************************-->
+		<!--************************************
+				Footer Start
+		*************************************-->
+		<footer id="tg-footer" class="tg-footer tg-haslayout">
+			<div class="tg-footerarea">
+				<div class="container">
+					<div class="row">
+						
+						<div class="tg-threecolumns">
+							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+								<div class="tg-footercol">
+									<strong class="tg-logo"><a href="javascript:void(0);"><img src="{{setting.logo.url}}" alt="image description"></a></strong>
+									<ul class="tg-contactinfo">
+										<li>
+											<i class="icon-apartment"></i>
+											<address>{{setting.street}}</address>
+										</li>
+										<li>
+											<i class="icon-phone-handset"></i>
+											<span>
+												<em>{{setting.phone}}</em>
+											</span>
+										</li>
+										<li>
+											<i class="icon-clock"></i>
+											<span>{{setting.graphic}}</span>
+										</li>
+										<li>
+											<i class="icon-envelope"></i>
+											<span>
+												<em><a href="mailto:support@domain.com">{{setting.email}}</a></em>
+											</span>
+										</li>
+									</ul>
+									<ul class="tg-socialicons">
+										<li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
+										<li class="tg-twitter"><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
+										<li class="tg-linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
+										<li class="tg-googleplus"><a href="javascript:void(0);"><i class="fa fa-google-plus"></i></a></li>
+										<li class="tg-rss"><a href="javascript:void(0);"><i class="fa fa-rss"></i></a></li>
+									</ul>
+								</div>
+							</div>
+						
+							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+								<div class="tg-footercol tg-widget tg-widgettopsellingauthors">
+									<div class="tg-widgettitle">
+										<h3>Top Selling Authors</h3>
+									</div>
+									<div class="tg-widgetcontent">
+										<ul>
+											<li>
+												<figure><a href="javascript:void(0);"><img src="{% static 'images/author/imag-09.jpg' %}" alt="image description"></a></figure>
+												<div class="tg-authornamebooks">
+													<h4><a href="javascript:void(0);">Jude Morphew</a></h4>
+													<p>21,658 Published Books</p>
+												</div>
+											</li>
+											<li>
+												<figure><a href="javascript:void(0);"><img src="{% static 'images/author/imag-10.jpg' %}" alt="image description"></a></figure>
+												<div class="tg-authornamebooks">
+													<h4><a href="javascript:void(0);">Shaun Humes</a></h4>
+													<p>20,257 Published Books</p>
+												</div>
+											</li>
+											<li>
+												<figure><a href="javascript:void(0);"><img src="{% static 'images/author/imag-11.jpg' %}" alt="image description"></a></figure>
+												<div class="tg-authornamebooks">
+													<h4><a href="javascript:void(0);">Kathrine Culbertson</a></h4>
+													<p>15,686 Published Books</p>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tg-newsletter">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+							<h4>Signup Newsletter!</h4>
+							<h5>Consectetur adipisicing elit sed do eiusmod tempor incididunt.</h5>
+						</div>
+						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+							<form class="tg-formtheme tg-formnewsletter">
+								<fieldset>
+									<input type="email" name="email" class="form-control" placeholder="Enter Your Email ID">
+									<button type="button"><i class="icon-envelope"></i></button>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tg-footerbar">
+				<a id="tg-btnbacktotop" class="tg-btnbacktotop" href="javascript:void(0);"><i class="icon-chevron-up"></i></a>
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<span class="tg-paymenttype"><img src="{% static 'images/paymenticon.png' %}" alt="image description"></span>
+							<span class="tg-copyright">2017 All Rights Reserved By &copy; Book Library</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!--************************************
+				Footer End
+		*************************************-->
+	</div>
+
+{% endblock content %}

@@ -1,0 +1,288 @@
+{% load static %}
+<header id="tg-header" class="tg-header tg-haslayout">
+    <div class="tg-topbar">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="tg-addnav">
+                        <li>
+                            <a href="javascript:void(0);">
+                                <i class="icon-phone"></i>
+                                <em>{{ setting.phone }}</em>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">
+                                <i class="icon-clock"></i>
+                                <em>{{setting.graphic}}</em>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="dropdown tg-themedropdown tg-currencydropdown">
+                        {% if request.user.is_authenticated %}
+                        <a href="javascript:void(0);" id="tg-currenty" class="tg-btnthemedropdown" >
+                            <i class="icon-user"></i>
+                            <a href="{% url 'account' request.user.username %}"><span>{{request.user.username}}</span></a>
+                        </a>
+                        {% else %}
+                        <a href="javascript:void(0);" id="tg-currenty" class="tg-btnthemedropdown" >
+                            <i class="icon-user"></i>
+                            <a href="{% url 'user_login'%}"><span>Войти</span></a>
+                        </a>
+                        {% endif %}
+                    </div>
+                    <div class="tg-middlecontainer">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <strong class="tg-logo"><a href="{% url 'index' %}"><img width="100px" height="40px" src="{{setting.logo.url}}" alt="company name here"></a></strong>
+                                    <div class="tg-searchbox">
+                                        <form action = "{% url 'search' %}" class="tg-formtheme tg-formsearch">
+                                            <input name='key' class="form-control me-2" type="text" placeholder="Поиск... ">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="tg-navigationarea">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <nav id="tg-nav" class="tg-nav">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#tg-navigation" aria-expanded="false">
+                                <span class="sr-only">Переключить навигацию</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div id="tg-navigation" class="collapse navbar-collapse tg-navigation">
+                            <ul>
+                                <li class="menu-item-has-children menu-item-has-mega-menu">
+                                    <a href="javascript:void(0);">Все категории</a>
+                                    <div class="mega-menu">
+                                        <ul class="tg-themetabnav" role="tablist">
+                                            {% for category in categoriies %}
+                                            <li role="presentation" class="active">
+                                                <a href="{% url 'category_book' category.slug %}">{{category.category_books}}</a>
+                                            </li>
+                                            {% endfor %} 
+                                        </ul>
+ 
+
+                                        <div class="tab-content tg-themetabcontent">
+                                            <div role="tabpanel" class="tab-pane active" id="artandphotography">
+                                                <ul>
+                                                    <li>
+                                                        <div class="tg-linkstitle">
+                                                            <h2>Architecture</h2>
+                                                        </div>
+                                                        <ul>
+                                                            <li><a href="products.html">Tough As Nails</a></li>
+                                                            <li><a href="products.html">Pro Grease Monkey</a></li>
+                                                            <li><a href="products.html">Building Memories</a></li>
+                                                            <li><a href="products.html">Bulldozer Boyz</a></li>
+                                                            <li><a href="products.html">Build Or Leave On Us</a></li>
+                                                        </ul>
+                                                        <a class="tg-btnviewall" href="products.html">View All</a>
+                                                    </li>
+                                                    <li>
+                                                        <div class="tg-linkstitle">
+                                                            <h2>Art Forms</h2>
+                                                        </div>
+                                                        <ul>
+                                                            <li><a href="products.html">Consectetur adipisicing</a></li>
+                                                            <li><a href="products.html">Aelit sed do eiusmod</a></li>
+                                                            <li><a href="products.html">Tempor incididunt labore</a></li>
+                                                            <li><a href="products.html">Dolore magna aliqua</a></li>
+                                                            <li><a href="products.html">Ut enim ad minim</a></li>
+                                                        </ul>
+                                                        <a class="tg-btnviewall" href="products.html">View All</a>
+                                                    </li>
+                                                    <li>
+                                                        <div class="tg-linkstitle">
+                                                            <h2>History</h2>
+                                                        </div>
+                                                        <ul>
+                                                            <li><a href="products.html">Veniam quis nostrud</a></li>
+                                                            <li><a href="products.html">Exercitation</a></li>
+                                                            <li><a href="products.html">Laboris nisi ut aliuip</a></li>
+                                                            <li><a href="products.html">Commodo conseat</a></li>
+                                                            <li><a href="products.html">Duis aute irure</a></li>
+                                                        </ul>
+                                                        <a class="tg-btnviewall" href="products.html">View All</a>
+                                                    </li>
+                                                </ul>
+                                                <ul>
+                                                    <li>
+                                                        <figure><img src="{% static 'images/img-01.png' %}" alt="image description"></figure>
+                                                        <div class="tg-textbox">
+                                                            <h3>More Than<span>12,0657,53</span>Books Collection</h3>
+                                                            <div class="tg-description">
+                                                                <p>Consectetur adipisicing elit sed doe eiusmod tempor incididunt laebore toloregna aliqua enim.</p>
+                                                            </div>
+                                                            <a class="tg-btn" href="products.html">view all</a>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane" id="biography">
+                                                <ul>
+                                                    <li>
+                                                        
+                                                        <div class="tg-linkstitle">
+                                                            <h2>Architecture</h2>
+                                                        </div>
+                                                        <ul>
+                                                            <li><a href="products.html">Tough As Nails</a></li>
+                                                            <li><a href="products.html">Pro Grease Monkey</a></li>
+                                                            <li><a href="products.html">Building Memories</a></li>
+                                                            <li><a href="products.html">Bulldozer Boyz</a></li>
+                                                            <li><a href="products.html">Build Or Leave On Us</a></li>
+                                                        </ul>
+                                                        <a class="tg-btnviewall" href="products.html">View All</a>
+                                                    </li>
+                                                    <li>
+                                                        <div class="tg-linkstitle">
+                                                            <h2>Art Forms</h2>
+                                                        </div>
+                                                        <ul>
+                                                            <li><a href="products.html">Consectetur adipisicing</a></li>
+                                                            <li><a href="products.html">Aelit sed do eiusmod</a></li>
+                                                            <li><a href="products.html">Tempor incididunt labore</a></li>
+                                                            <li><a href="products.html">Dolore magna aliqua</a></li>
+                                                            <li><a href="products.html">Ut enim ad minim</a></li>
+                                                        </ul>
+                                                        <a class="tg-btnviewall" href="products.html">View All</a>
+                                                    </li>
+                                                    <li>
+                                                        <div class="tg-linkstitle">
+                                                            <h2>History</h2>
+                                                        </div>
+                                                        <ul>
+                                                            <li><a href="products.html">Veniam quis nostrud</a></li>
+                                                            <li><a href="products.html">Exercitation</a></li>
+                                                            <li><a href="products.html">Laboris nisi ut aliuip</a></li>
+                                                            <li><a href="products.html">Commodo conseat</a></li>
+                                                            <li><a href="products.html">Duis aute irure</a></li>
+                                                        </ul>
+                                                        <a class="tg-btnviewall" href="products.html">View All</a>
+                                                    </li>
+                                                </ul>
+                                                <ul>
+                                                    <li>
+                                                        <figure><img src="{% static 'images/img-01.png' %}" alt="image description"></figure>
+                                                        <div class="tg-textbox">
+                                                            <h3>More Than<span>12,0657,53</span>Books Collection</h3>
+                                                            <div class="tg-description">
+                                                                <p>Consectetur adipisicing elit sed doe eiusmod tempor incididunt laebore toloregna aliqua enim.</p>
+                                                            </div>
+                                                            <a class="tg-btn" href="products.html">view all</a>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane" id="sciencefiction">
+                                                <ul>
+                                                    <li>
+                                                        <div class="tg-linkstitle">
+                                                            <h2>History</h2>
+                                                        </div>
+                                                        <ul>
+                                                            <li><a href="products.html">Veniam quis nostrud</a></li>
+                                                            <li><a href="products.html">Exercitation</a></li>
+                                                            <li><a href="products.html">Laboris nisi ut aliuip</a></li>
+                                                            <li><a href="products.html">Commodo conseat</a></li>
+                                                            <li><a href="products.html">Duis aute irure</a></li>
+                                                        </ul>
+                                                        <a class="tg-btnviewall" href="products.html">View All</a>
+                                                    </li>
+                                                    <li>
+                                                        <div class="tg-linkstitle">
+                                                            <h2>Architecture</h2>
+                                                        </div>
+                                                        <ul>
+                                                            <li><a href="products.html">Tough As Nails</a></li>
+                                                            <li><a href="products.html">Pro Grease Monkey</a></li>
+                                                            <li><a href="products.html">Building Memories</a></li>
+                                                            <li><a href="products.html">Bulldozer Boyz</a></li>
+                                                            <li><a href="products.html">Build Or Leave On Us</a></li>
+                                                        </ul>
+                                                        <a class="tg-btnviewall" href="products.html">View All</a>
+                                                    </li>
+                                                    <li>
+                                                        <div class="tg-linkstitle">
+                                                            <h2>Art Forms</h2>
+                                                        </div>
+                                                        <ul>
+                                                            <li><a href="products.html">Consectetur adipisicing</a></li>
+                                                            <li><a href="products.html">Aelit sed do eiusmod</a></li>
+                                                            <li><a href="products.html">Tempor incididunt labore</a></li>
+                                                            <li><a href="products.html">Dolore magna aliqua</a></li>
+                                                            <li><a href="products.html">Ut enim ad minim</a></li>
+                                                        </ul>
+                                                        <a class="tg-btnviewall" href="products.html">View All</a>
+                                                    </li>
+                                                </ul>
+                                                <ul>
+                                                    <li>
+                                                        <figure><img src="{% static 'images/img-01.png' %}" alt="image description"></figure>
+                                                        <div class="tg-textbox">
+                                                            <h3>More Than<span>12,0657,53</span>Books Collection</h3>
+                                                            <div class="tg-description">
+                                                                <p>Consectetur adipisicing elit sed doe eiusmod tempor incididunt laebore toloregna aliqua enim.</p>
+                                                            </div>
+                                                            <a class="tg-btn" href="products.html">view all</a>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="menu-item-has current-menu-item">
+                                    <a href="javascript:void(0);"> <a href="{% url 'index' %}">Главная</a></a>
+                                </li>
+                                <li class="menu-item-has">
+                                  <a href="javascript:void(0);"> <a href="{% url 'authors' %}">Авторы</a></a> 
+                                
+                                </li>
+                           
+                                <li class="menu-item-has">
+                                    <a href="javascript:void(0);"><a href="{% url 'products' %}">Книги</a></a>
+                                    
+                                </li>
+                                <li class="menu-item-has">
+                                    <a href="javascript:void(0);"><a href="{% url 'aboutus' %}">О нас</a></a>
+                                </li>
+                                <li class="menu-item-has">
+                                    <a href="javascript:void(0);"><a href="{% url 'response' %}">Контакты</a></a>
+                                </li>
+                                {% if request.user.is_authenticated %}
+                                <li><a href="{% url 'logout' %}">Выйти</a></li>
+                                {% else %}
+                                <li><a href="{% url 'register' %}">Регистрация</a></li>
+                                <li><a href="{% url 'user_login' %}">Войти</a></li>
+                                
+                                {% endif %}
+
+                                
+
+                                
+
+                                
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

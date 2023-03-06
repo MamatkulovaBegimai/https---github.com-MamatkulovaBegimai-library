@@ -1,0 +1,84 @@
+{% extends 'homepage.html' %}
+{% load static %}
+{% block content %}
+        
+        <!-- Hero Start -->
+        <section class="position-relative">
+          
+            <div class="bg-overlay bg-linear-gradient-2"></div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 p-0">
+                        <div class="d-flex flex-column min-vh-100 p-4">
+                        
+
+                            <!-- Start Content -->
+                            <div class="title-heading text-center my-auto">
+                                <div class="form-signin px-4 py-5 bg-white rounded-md shadow-sm">
+                                    <form method="POST" >
+                                        {% csrf_token %}
+                                        <h5 class="mb-4">Зарегистрируйтесь</h5>
+                            
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="form-floating mb-2">
+                                                    <input name="username" type="text" class="form-control"  placeholder="Harry">
+                                                    <label for="RegisterName">Имя пользователя</label>
+                                                </div>
+                                            </div><!--end col-->
+    
+                                            <div class="col-lg-12">
+                                                <div class="form-floating mb-2">
+                                                    <input name="email" type="email" class="form-control"  placeholder="name@example.com">
+                                                    <label for="RegisterEmail">Почта</label>
+                                                </div>
+                                            </div><!--end col-->
+    
+                                            <div class="col-lg-12">
+                                                <div class="form-floating mb-3">
+                                                    <input name="password" type="password" class="form-control" placeholder="Password">
+                                                    <label for="RegisterPassword">Пароль</label>
+                                                </div>
+                                            </div><!--end col-->
+
+                                            <div class="col-lg-12">
+                                                <div class="form-floating mb-3">
+                                                    <input name="confirm_password" type="password" class="form-control" placeholder="Password">
+                                                    <label for="RegisterPassword">Подтвердите пароль</label>
+                                                </div>
+                                            </div><!--end col-->
+                                        
+                                            <div class="col-lg-12">
+                                                <div class="form-check align-items-center d-flex mb-3">
+                                                    <input class="form-check-input mt-0" type="checkbox" value="" id="AcceptT&C">
+                                                    <label class="form-check-label text-muted ms-2" for="AcceptT&C"> Я согласен с<a href="javascript:void(0)" class="text-primary">пользовательским соглашением</a></label>
+                                                </div>
+                                            </div><!--end col-->
+                            
+                                            <div class="col-lg-12">
+                                                <button class="btn btn-primary rounded-md w-100" type="submit">Регистрация</button>
+                                            </div><!--end col-->
+    
+                                            <div class="col-12 text-center mt-4">
+                                                <small><span class="text-muted me-2">У вас уже есть аккаунт ? </span> <a href="{% url 'user_login' %}" class="text-dark fw-bold">Войти</a></small>
+                                            </div><!--end col-->
+                                        </div><!--end row-->
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- End Content -->
+
+                          
+                        </div>
+                    </div><!--end col-->
+                </div><!--end row-->
+            </div><!--end container-->
+        </section><!--end section-->
+        <!-- Hero End -->
+
+ 
+
+               
+        <!-- end Style switcher -->
+        
+    {% endblock content %}
