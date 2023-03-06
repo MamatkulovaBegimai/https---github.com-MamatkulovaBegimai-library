@@ -5,7 +5,7 @@
 __pycache__
 db.sqlite3
 media
-config 
+config.py 
 
 # Backup files # 
 *.bak 
