@@ -3995,9 +3995,9 @@ blockquote .tg-bookwriter{
 	height:auto;
 	border-radius:0;
 	margin:0 30px 0 0;
-}
+}	
 .tg-authordetail .tg-authorimg img{
-	width:100%;
+	/* width:100%; */
 	height:auto;
 	display:block;
 }
