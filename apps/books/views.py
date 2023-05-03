@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from apps.books.models import Books, Category
 from apps.settings.models import Settings
 from apps.authors.models import Authors
-from apps.users.models import User, Liked_product
+from apps.users.models import Liked_product
 from django.http import FileResponse
 
 # Create your views here.
